@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="plantilla/template :: head">
+    </head>
+    <body>
+        <header th:replace="plantilla/template :: header"></header>
+        <div class="container mt-2 ">
+            <br/>
+            <div class="d-flex align-items-center"> 
+                <h1 class="titulo-principal" th:text="${titulo}"></h1>
+                <a class="btn  btn-volver" th:href="@{/views/contactos/}" title="Volver"><i class="bi bi-arrow-return-left"></i> Volver</a>
+            </div> 
+            <br/> 
+            <form th:action="@{/views/contactos/guardar}"   th:object="${contacto}" method="post">
+                <div class="form-row align-items-center">
+                    <div class="col-md-2">
+
+                        <input type="hidden" th:field="*{id}">
+                        <label for="nombre" class="col-form-label ">Nombre: </label>  
+                    </div>
+                    <div class="col-md-4" >
+                        <input type="text" th:field="*{nombre}" class="form-control form-control-sm" id="nombre" placeholder="Ingrese nombre">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                    </div> 
+                </div>
+
+                <div class="form-row align-items-center">
+                    <div class="col-md-2">
+                        <label for="apellido" class="col-form-label mt-2">Apellido: </label>  
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" th:field="*{apellido}" class="form-control form-control-sm" id="apellido" placeholder="Ingrese apellido">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+                    </div> 
+                </div>
+
+                <div class="form-row align-items-center">
+                    <div class="col-md-2">
+                        <label for="telefono" class="col-form-label mt-2">Teléfono: </label>  
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" th:field="*{telefono}" class="form-control form-control-sm" id="telefono" placeholder="Ingrese teléfono">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+                    </div> 
+                </div>
+
+                <div class="form-row align-items-center">
+                    <div class="col-md-2">
+                        <label for="email" class="col-form-label mt-2">Email: </label>  
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" th:field="*{email}" class="form-control form-control-sm " id="email" placeholder="Ingrese email">
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                    </div> 
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+            </form>
+        </div>
+
+
+        <footer th:replace="plantilla/template :: footer"></footer>
+    </body>
+</html>
